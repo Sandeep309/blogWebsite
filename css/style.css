@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+*:focus {
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+/*# sourceMappingURL=style.css.map */
