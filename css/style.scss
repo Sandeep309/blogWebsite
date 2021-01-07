@@ -9,5 +9,11 @@
   outline: none !important;
   box-shadow: none !important;
 }
+body {
+  max-height: 100vh;
+}
+textarea {
+  resize: none;
+}
 // My Colors
 $MandalorianBlue: #1857a4;

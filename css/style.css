@@ -9,4 +9,12 @@
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
+
+body {
+  max-height: 100vh;
+}
+
+textarea {
+  resize: none;
+}
 /*# sourceMappingURL=style.css.map */

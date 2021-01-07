@@ -17,12 +17,19 @@
 
     <!-- LogIn Form -->
     <section class="container py-5 mt-5">
+        <!-- Massage -->
+        <?php
+        if (isset($_GET['msg'])) {
+            echo "<p class='lead text-danger'>" . $_GET['msg'] . "</p>";
+        }
+        ?>
+
         <div class="row">
             <div class="col-md-6 mb-3 mx-auto mx-md-0">
                 <div class="card" style="max-width: 30rem;">
                     <div class="card-body">
                         <h2 class="card-text mb-3">Log In </h2>
-                        <form action="authAdmin" method="POST">
+                        <form action="authAdmin.php" method="POST">
                             <div class="mb-3">
                                 <label class="form-label">Email address</label>
                                 <input type="text" class="form-control" name="email">

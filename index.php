@@ -17,6 +17,7 @@
 
     <!-- Blogs -->
     <section class="container py-5 mt-5">
+        <!-- Massage -->
         <?php
         if (isset($_GET['msg'])) {
             echo "<p class='lead text-danger'>" . $_GET['msg'] . "</p>";
@@ -27,28 +28,42 @@
             <div class="col-md-6">
                 <div class="row">
                     <?php
-                    $blogsData = array(
-                        array("PHP Tutorial", "PHP is a server scripting language, and a powerful
-                         tool for making dynamic and interactive Web pages."),
-                        array("SQL Tutorial", "SQL is a standard language for storing, manipulating
-                         and retrieving data in databases."),
-                    );
-                    foreach ($blogsData as $blogTable) :
+
+                    $conect = @mysqli_connect('localhost', 'root', '', 'blogsdb')
+                        or die('Error<br><h2>' . mysqli_connect_error() . "</h2>");
+
+                    if ($conect) {
+                        $sql = "SELECT * FROM blogs";
+                        $result = mysqli_query($conect, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($data = mysqli_fetch_assoc($result)) :
                     ?>
-                        <div class="col-auto mb-3 mx-auto mx-md-0">
-                            <div class="card " style="max-width: 20rem;">
-                                <img src="img/blogs.jpg" class="card-img-top" alt="blogs image">
-                                <div class="card-body">
-                                    <h5 class="card-title mb-1"><?php echo $blogTable[0]; ?></h5>
-                                    <small class="card-subtitle"><i class="far fa-edit text-primary"></i> Sandee saini</small>
-                                    <p class="card-text mt-2"><?php echo $blogTable[1]; ?></p>
-                                    <a href="#" class="btn btn-primary ">Read more</a>
+
+                                <div class="col-auto mb-3 mx-auto mx-md-0">
+                                    <div class="card " style="max-width: 20rem;">
+                                        <img src="img/blogs.jpg" class="card-img-top" alt="blogs image">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-1"><?php echo $data['title']; ?></h5>
+                                            <small class="card-subtitle"><i class="far fa-edit text-primary">
+                                                </i> <?php echo $data['writer'] ?>
+                                            </small>
+                                            <p class="card-text mt-2"><?php echo $data['content']; ?></p>
+                                            <a href="#" class="btn btn-primary ">Read more</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
                     <?php
-                    endforeach;
+
+                            endwhile;
+                        } else {
+                            echo "query failed";
+                        }
+                    }
+                    mysqli_close($conect);
                     ?>
+
+
+
                 </div>
 
             </div>

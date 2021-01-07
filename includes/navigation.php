@@ -7,7 +7,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="d-flex justify-content-md-end w-100">
                 <div class="navbar-nav gap-3">
-                    <a class="nav-link fs-4" href="#">Admin</a>
+                    <a class="nav-link fs-4" href="index.php">Home</a>
+                    <a class="nav-link fs-4" href="admin.php">Admin</a>
                     <a class="nav-link fs-4" href="login.php">Log In</a>
                     <a class="nav-link fs-4" href="#">Log Out</a>
                 </div>
