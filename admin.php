@@ -1,3 +1,11 @@
+<!-- SESSION  -->
+<?php
+session_start();
+if (!isset($_SESSION['adminName'])) {
+    header('location:login.php?msg=Please Log In First !');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +25,8 @@
 
     <!-- LogIn Form -->
     <section class="container py-5 mt-5">
+        <!-- Wecome User -->
+        <h3 class="text-dark">Welcome <?php echo $_SESSION['adminName']; ?></h3>
         <!-- Massage -->
         <?php
         if (isset($_GET['msg'])) {
@@ -24,8 +34,56 @@
         }
         ?>
 
-        <!-- Blogs List -->
-        <h3 class="h3">Blogs List</h3>
+        <div class="d-flex justify-content-between">
+            <!-- Blogs List -->
+            <h3 class="h3">Blogs List</h3>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Create Blog
+            </button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">New Blog</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- Create Blog Post -->
+                        <form action="addBlog.php" method="POST">
+                            <h3>Create New Blog </h3>
+                            <div class="mb-3">
+                                <label class="form-label">Title</label>
+                                <input type="text" name="blogtitle" class="form-control" placeholder="Blog name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Content</label>
+                                <textarea name="blogcontent" class="form-control" placeholder="Blog content" rows="5" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Writer</label>
+                                <input type="text" name="writer" class="form-control" placeholder="Writer" required>
+                            </div>
+                            <div class="mb-3 text-end">
+                                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-primary">Submit</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog List Table -->
         <div class="table-responsive mb-3">
 
             <table class="table table-striped table-hover">
@@ -48,17 +106,18 @@
                         $result = mysqli_query($conect, $sql);
                         if (mysqli_num_rows($result) > 0) {
                             while ($data = mysqli_fetch_assoc($result)) :
+                                $str = $data['date'];
                     ?>
                                 <tr>
                                     <th scope="row"><?php echo $data['id']; ?></th>
                                     <td><?php echo $data['title']; ?></td>
                                     <td><?php echo $data['writer']; ?></td>
-                                    <td><?php echo $data['date']; ?></td>
+                                    <td><?php echo date('g:i A, d M Y', strtotime($str)); ?></td>
                                     <td>
-                                        <a href="editBlog.php?id=<?php echo $data['id']; ?>" class="btn btn-warning">
+                                        <a href="editBlog.php?id=<?php echo $data['id']; ?>" class="btn btn-warning  mb-2">
                                             <i class="far fa-edit"></i>
                                         </a>
-                                        <a href="deleteBlog.php?id=<?php echo $data['id']; ?>" class="btn btn-danger">
+                                        <a href="deleteBlog.php?id=<?php echo $data['id']; ?>" class="btn btn-danger mb-2">
                                             <i class="far fa-trash-alt"></i>
                                         </a>
                                     </td>
@@ -77,32 +136,7 @@
             </table>
         </div>
 
-
-        <!-- Create Blog Post -->
-        <!-- Forms -->
-        <form action="addBlog.php" method="POST">
-            <h3>Create New Blog </h3>
-            <div class="mb-3">
-                <label class="form-label">Title</label>
-                <input type="text" name="blogtitle" class="form-control" placeholder="Blog name">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Content</label>
-                <textarea name="blogcontent" class="form-control" placeholder="Blog content" rows="5"></textarea>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Writer</label>
-                <input type="text" name="writer" class="form-control" placeholder="Writer">
-            </div>
-            <div class="mb-3 text-end">
-                <button class="btn btn-success disabled">Reset</button>
-                <button class="btn btn-primary">Submit</button>
-            </div>
-        </form>
     </section>
-
-
-
 
     <!-- script -->
     <script src="bootstrap-5.0.0-beta1-dist/js/bootstrap.bundle.min.js"></script>

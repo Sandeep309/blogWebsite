@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Website</title>
+    <title>News Website</title>
     <!-- Links -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link rel="stylesheet" href="bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css">
@@ -40,15 +40,22 @@
                     ?>
 
                                 <div class="col-auto mb-3 mx-auto mx-md-0">
-                                    <div class="card " style="max-width: 20rem;">
-                                        <img src="img/blogs.jpg" class="card-img-top" alt="blogs image">
+                                    <div class="card" style="max-width: 20rem;">
+                                        <img src="img/newsPs.png" class="card-img" alt="blogs image">
+                                        <div class="card-img-overlay p-0 text-end">
+                                            <small class="badge">
+                                                <?php echo date('d M Y', strtotime($data['date'])); ?>
+                                            </small>
+                                        </div>
                                         <div class="card-body">
                                             <h5 class="card-title mb-1"><?php echo $data['title']; ?></h5>
-                                            <small class="card-subtitle"><i class="far fa-edit text-primary">
-                                                </i> <?php echo $data['writer'] ?>
+                                            <small class="card-subtitle">
+                                                <i class="far fa-edit text-primary">
+                                                </i> <?php echo $data['writer']; ?>
                                             </small>
+
                                             <p class="card-text mt-2"><?php echo $data['content']; ?></p>
-                                            <a href="#" class="btn btn-primary ">Read more</a>
+                                            <a href="#" class="btn btn-primary btn-sm">Read more</a>
                                         </div>
                                     </div>
                                 </div>

@@ -54,7 +54,7 @@
                 <input type="text" name="writer" class="form-control" value="<?php echo $data['writer']; ?>" placeholder="Writer">
             </div>
             <div class="mb-3 text-end">
-                <button class="btn btn-success disabled">Reset</button>
+                <a href="admin.php" class="btn btn-success">Cancel</a>
                 <button class="btn btn-primary">Submit</button>
             </div>
         </form>

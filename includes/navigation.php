@@ -1,6 +1,6 @@
 <nav class="navbar p-1 navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand fs-1" href="index.php">Blogs</a>
+        <a class="navbar-brand fs-1" href="index.php">News</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,7 +10,7 @@
                     <a class="nav-link fs-4" href="index.php">Home</a>
                     <a class="nav-link fs-4" href="admin.php">Admin</a>
                     <a class="nav-link fs-4" href="login.php">Log In</a>
-                    <a class="nav-link fs-4" href="#">Log Out</a>
+                    <a class="nav-link fs-4" href="process/logout.php">Log Out</a>
                 </div>
             </div>
         </div>
