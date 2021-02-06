@@ -40,8 +40,8 @@
                     ?>
 
                                 <div class="col-auto mb-3 mx-auto mx-md-0">
-                                    <div class="card" style="max-width: 20rem;">
-                                        <img src="img/newsPs.png" class="card-img" alt="blogs image">
+                                    <div class="card border-0 shadow" style="max-width: 20rem;">
+                                        <img src="img/blogs.jpg" class="card-img rounded-0 rounded-top" alt="blogs image">
                                         <div class="card-img-overlay p-0 text-end">
                                             <small class="badge">
                                                 <?php echo date('d M Y', strtotime($data['date'])); ?>

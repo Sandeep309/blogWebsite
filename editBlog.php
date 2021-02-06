@@ -1,3 +1,11 @@
+<!-- SESSION  -->
+<?php
+session_start();
+if (!isset($_SESSION['adminName'])) {
+    header('location:login.php?msg=Please Log In First !');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +38,8 @@
             } else {
                 header('location:admin.php?msg= Retry to edit !');
             }
+        } else {
+            header('location:admin.php?msg= Retry to edit !');
         }
     }
     mysqli_close($conect);

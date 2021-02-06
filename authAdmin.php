@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       or die('ERROR:<h2>' . mysqli_connect_error() . '</h2>');
 
    if ($connect) {
-      $sql = "SELECT * FROM userinfo WHERE Email ='$email' && Pass='$password'";
+      $sql = "SELECT * FROM userinfo WHERE Email ='$email' && fullname='$fullName'";
       $result = mysqli_query($connect, $sql);
       if (mysqli_num_rows($result) == 1) {
          while ($data = mysqli_fetch_assoc($result)) :

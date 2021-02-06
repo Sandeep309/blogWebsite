@@ -1,6 +1,6 @@
 <nav class="navbar p-1 navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand fs-1" href="index.php">News</a>
+        <a class="navbar-brand fs-1" href="index.php">Blogs</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
             <span class="navbar-toggler-icon"></span>
         </button>

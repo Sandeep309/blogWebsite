@@ -16,6 +16,7 @@ if (!isset($_SESSION['adminName'])) {
     <!-- Links -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link rel="stylesheet" href="bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -26,7 +27,7 @@ if (!isset($_SESSION['adminName'])) {
     <!-- LogIn Form -->
     <section class="container py-5 mt-5">
         <!-- Wecome User -->
-        <h3 class="text-dark">Welcome <?php echo $_SESSION['adminName']; ?></h3>
+        <h3 class="text-dark text-end text-capitalize">Welcome <?php echo $_SESSION['adminName']; ?></h3>
         <!-- Massage -->
         <?php
         if (isset($_GET['msg'])) {
@@ -36,15 +37,16 @@ if (!isset($_SESSION['adminName'])) {
 
         <div class="d-flex justify-content-between">
             <!-- Blogs List -->
-            <h3 class="h3">Blogs List</h3>
+            <h2 class="text-dark">Blogs List</h2>
 
-            <!-- Button trigger modal -->
+            <!-- Create Post -->
+            <!-- Button CreateBlog trigger modal -->
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Create Blog
             </button>
         </div>
 
-        <!-- Modal -->
+        <!-- Modal CreateBlog -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -84,9 +86,8 @@ if (!isset($_SESSION['adminName'])) {
         </div>
 
         <!-- Blog List Table -->
-        <div class="table-responsive mb-3">
-
-            <table class="table table-striped table-hover">
+        <div class="table-responsive mt-3 mb-3">
+            <table id="table_id" class="table table-striped table-hover" style="width:100%">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
@@ -114,7 +115,7 @@ if (!isset($_SESSION['adminName'])) {
                                     <td><?php echo $data['writer']; ?></td>
                                     <td><?php echo date('g:i A, d M Y', strtotime($str)); ?></td>
                                     <td>
-                                        <a href="editBlog.php?id=<?php echo $data['id']; ?>" class="btn btn-warning  mb-2">
+                                        <a href="editBlog.php?id=<?php echo $data['id']; ?>" class="btn btn-warning mb-2">
                                             <i class="far fa-edit"></i>
                                         </a>
                                         <a href="deleteBlog.php?id=<?php echo $data['id']; ?>" class="btn btn-danger mb-2">
@@ -138,8 +139,20 @@ if (!isset($_SESSION['adminName'])) {
 
     </section>
 
+
+
     <!-- script -->
     <script src="bootstrap-5.0.0-beta1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table_id').DataTable({
+                responsive: true
+            });
+        });
+    </script>
 </body>
 
 </html>

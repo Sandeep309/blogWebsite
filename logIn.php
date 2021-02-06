@@ -26,7 +26,7 @@
 
         <div class="row">
             <div class="col-md-6 mb-3 mx-auto mx-md-0">
-                <div class="card" style="max-width: 30rem;">
+                <div class="card border-0 shadow" style="max-width: 30rem;">
                     <div class="card-body">
                         <h2 class="card-text mb-3">Log In </h2>
                         <!-- Log In Form -->
